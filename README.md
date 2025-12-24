@@ -1,35 +1,73 @@
-# 📚 Online Book Store SQL Project
+📚 Online Book Store – SQL Database Project
+Project Overview
+This is a real-world SQL database project for an Online Book Store.
+It manages book inventory, customer records, and orders. The system is designed to handle day-to-day bookstore operations such as tracking available stock, recording purchases, and analyzing sales.
 
-## Description
-This project is a simple SQL database for an online book store. It manages data using three tables: **Books**, **Customers**, and **Orders**.
+Database Schema
+Books Table
+Stores all book details.
+- Book_ID (PK)
+- Title
+- Author
+- Genre
+- Published_Year
+- Price
+- Stock
+Customers Table
+Stores customer information.
+- Customer_ID (PK)
+- Name
+- Email
+- Phone
+- City
+- Country
+Orders Table
+Stores purchase records.
+- Order_ID (PK)
+- Customer_ID (FK → Customers.Customer_ID)
+- Book_ID (FK → Books.Book_ID)
+- Order_Date
+- Quantity
+- Total_Amount
 
-## Tables
-- **Books** → Stores book details (Book_ID, Title, Author, Price, Quantity).
-- **Customers** → Stores customer details (Customer_ID, Name, Email, City).
-- **Orders** → Stores order details (Order_ID, Customer_ID, Book_ID, Quantity, Total_Amount, Order_Date).
+ER Diagram
++-----------+           +-------------+           +--------+
+| Customers |           |   Orders    |           | Books  |
++-----------+           +-------------+           +--------+
+| Customer_ID|<-------> | Customer_ID |           | Book_ID|
+| Name       |           | Order_ID    | <------->| Title  |
+| Email      |           | Book_ID     |           | Author |
+| Phone      |           | Order_Date  |           | Genre  |
+| City       |           | Quantity    |           | Year   |
+| Country    |           | Total_Amount|           | Price  |
++-----------+           +-------------+           | Stock  |
+                                                  +--------+
 
-## Features
-- Track books available in the store.
-- Record customer information.
-- Manage orders and calculate total amounts.
-- Run queries for sales analysis and customer tracking.
 
-## Example Queries
-- Find total quantity of books sold by each author.
-- List customers who placed at least 2 orders.
-- Show cities where customers placed orders above a certain amount.
-- Check book availability and prices.
 
-## Benefits
-- Simple design with only 3 tables.
-- Easy to understand relationships between books, customers, and orders.
-- Good practice for SQL queries like `JOIN`, `GROUP BY`, `HAVING`, and `SUM`.
+Data Import
+CSV files are used to load data into tables:
+- Books.csv → Books table
+- Customers.csv → Customers table
+- Orders.csv → Orders table
 
----
+Key Features
+- 📖 Inventory Management: Track available stock of books.
+- 👤 Customer Records: Store customer details for communication and analysis.
+- 🛒 Order Processing: Record purchases with quantity and total amount.
+- 💰 Revenue Tracking: Calculate total revenue from all orders.
+- 📊 Sales Insights: Identify top-selling genres, authors, and customers.
+- 🌍 Customer Analytics: Find customer distribution by city/country.
+- 📦 Stock Monitoring: Check remaining stock after fulfilling orders.
 
-👨‍💻 **How to Use**
-1. Import the SQL files into your database.
-2. Run the provided queries to test functionality.
-3. Extend the project by adding more queries or features.
+Example Use Cases
+- Store Manager can check which books are low in stock.
+- Sales Team can identify top customers and regions generating revenue.
+- Analytics Team can calculate total revenue and genre-wise sales.
+- Admin can import new books/customers/orders via CSV files.
 
----
+Business Value
+- Helps bookstore owners manage inventory efficiently.
+- Provides insights into customer behavior and sales trends.
+- Supports decision-making for restocking and marketing.
+- Demonstrates SQL skills in a real-world business scenario.
